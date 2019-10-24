@@ -1,5 +1,6 @@
 package utils;
 
+import visual.Ray;
 import visual.Vec3;
 
 public class VecTool {
@@ -20,13 +21,25 @@ public class VecTool {
 	public static double dot( Vec3 v1,  Vec3 v2) {
 	  return v1.e[0] * v2.e[0] + v1.e[1] * v2.e[1] + v1.e[2] * v2.e[2];
 	}
-
 	public static Vec3 cross( Vec3 v1,  Vec3 v2) {
 	  return new Vec3(
 	          v1.e[1] * v2.e[2] - v1.e[2] * v2.e[1],
 	          -(v1.e[0] * v2.e[2] - v1.e[2] * v2.e[0]),
 	          v1.e[0] * v2.e[1] - v1.e[1] * v2.e[0]
 	  );
+	}
+	public static double hitSphere(Vec3 center, double radius, Ray r)
+	{
+		Vec3 oc = VecTool.minus(r.origin, center);
+		double a = VecTool.dot(r.direction,r.direction);
+		double b = 2.0*VecTool.dot(oc,r.direction);
+		double c = VecTool.dot(oc,oc) - radius*radius;
+		double derta = b*b-4*a*c;
+		if(derta < 0)
+		{
+			return -1.0;
+		}
+		return (-b-Math.sqrt(derta))/(2*a);
 	}
 
 	public static void main(String[] args) {

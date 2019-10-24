@@ -19,7 +19,7 @@ public class Ray {
 	public Vec3 direction(){ 
 		return direction; 
 	}
-	public Vec3 pointAtParameter(float t) {
+	public Vec3 pointAtParameter(double t) {
 	    return VecTool.plus(this.origin, VecTool.conTimes(this.direction,t));
 	  }
 	public static void main(String[] args) {
