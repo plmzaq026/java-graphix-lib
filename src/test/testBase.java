@@ -51,11 +51,11 @@ public class testBase {
 			for(int i = 0;i < nx;i ++)
 			{
 				double u = (double)i / (double)nx;
-				double y = (double)j / (double)ny;
+				double v = (double)j / (double)ny;
 				Ray r = new Ray(origin,
 						VecTool.plus(
 								VecTool.plus(lowerLeftCorner,VecTool.conTimes(u, horizontal)),
-								VecTool.conTimes(u, vertical))
+								VecTool.conTimes(v, vertical))
 						);
 				Vec3 col = color(r);
 			
